@@ -1,15 +1,15 @@
 use dashmap::DashMap;
- use lazy_static::lazy_static;
- use crate::model::subscriber::Subscriber;
+use lazy_static::lazy_static;
+use crate::model::subscriber::Subscriber;
  
- // Singleton of DB
- lazy_static! {
-     pub static ref SUBSCRIBERS: DashMap<String, DashMap<String, Subscriber>> = DashMap::new();
- }
+// Singleton of DB
+lazy_static! {
+    pub static ref SUBSCRIBERS: DashMap<String, DashMap<String, Subscriber>> = DashMap::new();
+}
  
- pub struct SubscriberRepository;
+pub struct SubscriberRepository;
  
- impl SubscriberRepository {
+impl SubscriberRepository {
     pub fn add(product_type: &str, subscriber: Subscriber) -> Subscriber {
         let subscriber_value = subscriber.clone();
         if SUBSCRIBERS.get(product_type).is_none() {
@@ -40,4 +40,4 @@ use dashmap::DashMap;
         }
         return None;
     }
- }  
+}  
