@@ -48,15 +48,15 @@ You can install Postman via this website: https://www.postman.com/downloads/
     (You might want to use `cargo check` if you only need to verify your work without running the app.)
 
 ## Mandatory Checklists (Publisher)
--   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
+-   [✓] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
 -   **STAGE 1: Implement models and repositories**
-    -   [ ] Commit: `Create Subscriber model struct.`
-    -   [ ] Commit: `Create Notification model struct.`
-    -   [ ] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
-    -   [ ] Commit: `Implement add function in Subscriber repository.`
-    -   [ ] Commit: `Implement list_all function in Subscriber repository.`
-    -   [ ] Commit: `Implement delete function in Subscriber repository.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
+    -   [✓] Commit: `Create Subscriber model struct.`
+    -   [✓] Commit: `Create Notification model struct.`
+    -   [✓] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
+    -   [✓] Commit: `Implement add function in Subscriber repository.`
+    -   [✓] Commit: `Implement list_all function in Subscriber repository.`
+    -   [✓] Commit: `Implement delete function in Subscriber repository.`
+    -   [✓] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -77,6 +77,12 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+1. **In the Observer pattern diagram explained by the Head First Design Pattern book, Subscriber is defined as an interface. Explain based on your understanding of Observer design patterns, do we still need an interface (or `trait` in Rust) in this BambangShop case, or a single Model `struct` is enough?**<br><br>
+    Karena kondisi BambangShop saat ini masih sederhana dengan _class_ Subscriber berperan sebagai satu-satunya _observer_, maka satu model `struct` masih cukup. Penggunaan `trait` akan diperlukan jika nantinya Suscriber sebagai _observer_ memiliki jenis atau perilaku yang berbeda-beda. Hal ini akan mendukung penerapan _Open/Closed Principle_.<br><br>
+2. **`id` in `Program` and `url` in `Subscriber` is intended to be unique. Explain based on your understanding, is using `Vec` (list) sufficient or using `DashMap` (map/dictionary) like we currently use is necessary for this case?**<br><br>
+    Menggunakan `DashMap` lebih menguntungkan daripada menggunakan `Vec`. Keuntungannya terdapat pada penyimpanan data `id` dan `url` yang bisa dihubungkan langsung dengan `Program` dan `Subscriber` yang bersangkutan dengan sistem _key-value_. `DashMap` juga dapat berjalan dengan efisien ketika menghadapi data atau _request_ yang besar. <br><br>
+3. **When programming using Rust, we are enforced by rigorous compiler constraints to make a thread-safe program. In the case of the List of Subscribers (`SUBSCRIBERS`) static variable, we used the `DashMap` external library for `thread safe HashMap`. Explain based on your understanding of design patterns, do we still need `DashMap` or we can implement Singleton pattern instead?**<br><br>
+    `DashMap` tetap diperlukan karena selain mendukung _multithreading_ pada pemrosesan Map `Subscriber`, `DashMap` menyediakan fasilitas _thread-safe_ secara _built-in_ untuk operasi pada Map. Jadi, mengimplementasikan Singleton _pattern_ saja belum cukup jika tidak dilengkapi dengan prosedur _thread-safe_.
 
 #### Reflection Publisher-2
 
