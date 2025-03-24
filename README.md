@@ -58,12 +58,12 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [✓] Commit: `Implement delete function in Subscriber repository.`
     -   [✓] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [✓] Commit: `Create Notification service struct skeleton.`
+    -   [✓] Commit: `Implement subscribe function in Notification service.`
+    -   [✓] Commit: `Implement subscribe function in Notification controller.`
+    -   [✓] Commit: `Implement unsubscribe function in Notification service.`
+    -   [✓] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [✓] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -85,5 +85,11 @@ This is the place for you to write reflections:
     `DashMap` tetap diperlukan karena selain mendukung _multithreading_ pada pemrosesan Map `Subscriber`, `DashMap` menyediakan fasilitas _thread-safe_ secara _built-in_ untuk operasi pada Map. Jadi, mengimplementasikan Singleton _pattern_ saja belum cukup jika tidak dilengkapi dengan prosedur _thread-safe_.
 
 #### Reflection Publisher-2
+1. **In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model?**<br><br>
+    Dengan memisahkan Service dan Repository dari Model, kita telah menerapkan _Single Responsibility Principle_. Repository bertanggung jawab pada akses dan penyimpanan data ke _database_, sementara Service bertugas untuk menangani logika pengolahan datanya. Pemisahan ini memungkinkan kita menguji masing-masing komponen secara terpisah dan mengembangkan atau memodifikasi fungsi masing-masing tanpa mengganggu Model yang sudah dibuat.<br><br>
+2. **What happens if we only use the Model? Explain your imagination on how the interactions between each model (`Program`, `Subscriber`, `Notification`) affect the code complexity for each model?**<br><br>
+    Jika kita hanya menggunakan Model tanpa memisahkan Service dan Repository, Model tersebut harus menangani banyak hal, mulai dari penyimpanan data hingga logika fungsinya. Jika dilakukan perubahan pada satu fungsi, fungsi lain juga harus ikut berubah. Akibatnya dapat meningkatkan resiko terjadinya _bug_, kesulitan _maintainability_, dan kode menjadi lebih kompleks dan sulit dibaca. <br><br>
+3. **Have you explored more about `Postman`? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.**<br><br>
+    `Postman` sangat berguna untuk menguji _endpoint_ dan API dari program yang kita buat. Kita bisa mengecek _behavior_ program dengan mengirim berbagai jenis _request_ (GET, POST, PUT, DELETE, dll.) ke server melalui Postman. Tentu _response_-nya juga ditampilkan Postman untuk verifikasi apakah _endpoint_ berjalan sesuai yang diharapkan.
 
 #### Reflection Publisher-3
